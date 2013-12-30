@@ -2,11 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="yokuApp"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>YoKu</title>
+    <title ng-bind="website.name"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -19,13 +19,77 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="yokuApp">
+  <body ng-cloak>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <!-- fixed navigation bar -->
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#b-menu-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand company-name" href="{{ website.href }}"><span class="glyphicon glyphicon-road"></span><label ng-bind="website.name"></label></a>
+        </div>
+        <div class="collapse navbar-collapse" id="b-menu-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-repeat="m in menu" class="{{ m.className }}"><a href="{{ m.href }}" ng-bind="m.text"></a></li>
+          </ul>
+        </div> <!-- /.nav-collapse -->
+      </div> <!-- /.container -->
+    </div> <!-- /.navbar -->
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="sidebar">
+            <div class="pd">
+              <div class="avatar">
+                <img ng-src="{{ user.photo }}">
+              </div>
+              <div class="details">
+                <p class="big-text" ng-bind="user.fullname"></p>
+                <p class="small-text" ng-bind="user.designation"></p>
+              </div>
+            </div>
+            <div class="workspace-div">
+              <div class="btn-group">
+                <button type="button" class="btn btn-info workspace-btn" ng-bind="dafaultWorkscape.name">{{}}</button>
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li ng-repeat="w in workspace"><a href="#" ng-bind="w.name"></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">New workspace</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-div">
+              <ul>
+                <li>
+                  <a href="#" class="add-project"><span class="glyphicon glyphicon-plus"></span> Project</a>
+                </li>
+                <li ng-repeat="p in dafaultWorkscape.projects">
+                  <a href="#" ng-bind="p.name"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content" ng-view=""></div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <span class="copy">&copy; <span ng-bind="website.footer"></span></span>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -59,6 +123,9 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/website.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/workspace.js"></script>
         <!-- endbuild -->
 </body>
 </html>
