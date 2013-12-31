@@ -60,7 +60,7 @@
             </div>
             <div class="workspace-div">
               <div class="btn-group">
-                <button type="button" class="btn btn-info workspace-btn" ng-bind="dafaultWorkscape.name">{{}}</button>
+                <button type="button" class="btn btn-info workspace-btn">Select Workspace</button>
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
@@ -68,7 +68,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li ng-repeat="w in workspace"><a href="#" ng-bind="w.name"></a></li>
                   <li class="divider"></li>
-                  <li><a href="#">New workspace</a></li>
+                  <li><a href="#workspace">New workspace</a></li>
                 </ul>
               </div>
             </div>
@@ -126,6 +126,7 @@
         <script src="scripts/services/website.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/workspace.js"></script>
+        <script src="scripts/controllers/workspace.js"></script>
         <!-- endbuild -->
 </body>
 </html>

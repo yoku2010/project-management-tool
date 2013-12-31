@@ -5,13 +5,13 @@ angular.module('yokuApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute'
-]).run(['$rootScope', '$website', '$menu', 'User', 'Workspace', function ($rootScope, $website, $menu, User, Workspace) {
-  $rootScope.menu = $menu;
-  $rootScope.website = $website;
+]).run(['$rootScope', 'Website', 'Menu', 'User', 'Workspace', function ($rootScope, Website, Menu, User, Workspace) {
+  $rootScope.website = Website;
+  $rootScope.menu = Menu;
   $rootScope.user = User;
   $rootScope.workspace = Workspace.workspace;
   $rootScope.dafaultWorkscape = $rootScope.workspace[0];
-  console.log(User);
+  $rootScope.workspaceType = Workspace.workspaceType;
 }]).config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -20,6 +20,9 @@ angular.module('yokuApp', [
       })
       .when('/404', {
         templateUrl: '404.html',
+      })
+      .when('/workspace', {
+        templateUrl: 'views/workspace.html',
         controller: 'WorkspaceCtrl'
       })
       .otherwise({

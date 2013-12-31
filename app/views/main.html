@@ -1,41 +1,35 @@
 <div id="content_header">
-  <h1>Project</h1>
+  <h1>Workspace</h1>
 </div>
 <div id="breadcrumb">
-  <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
+  <a href="#" title="" class="tip-bottom current" data-original-title="Go to Home">
     <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
-  <a href="#">Personal Workspace</a>
-  <a href="#" class="current">YoKu</a>
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
-  <!-- start:bootstrap box-->
+  <!-- start:workspace box-->
+    <div class="col-sm-12 center">
+      <ul class="w-dashboard">
+        <li ng-repeat="wt in newWorkspaceType">
+          <a href="#">
+            <span class="glyphicon  glyphicon-{{wt.icon}}"></span>
+            {{ wt.name }} ({{ wt.workspace.length }})
+          </a>
+        </li>
+      </ul>
+    </div>
+  <!-- end:workspace box-->
+  <!-- start:todos box-->
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Add Workspace</h3>
+          <h3 class="panel-title">Todos</h3>
         </div>
         <div class="panel-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="workspace_name">Name of your company or team</label>
-              <input type="text" class="form-control" id="workspace_name" name="workspace_name" placeholder="enter workspace name">
-            </div>
-            <div class="form-group">
-              <label for="workspace_members">Members</label>
-              <input type="text" class="form-control" id="workspace_members" name="workspace_members" placeholder="enter members name">
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description" name="description" placeholder="enter workspace description"></textarea>
-              <p class="help-block">Details about project and website url etc.</p>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-            <button type="button" class="btn btn-default">Cancel</button>
-          </form>
+          <p>No Todos</p>
         </div>
       </div>
     </div>
-  <!-- end:bootstrap box-->
+  <!-- end:todos box-->
   </div>
 </div>
