@@ -15,17 +15,23 @@
           <h3 class="panel-title">Add Workspace</h3>
         </div>
         <div class="panel-body">
-          <form role="form">
+          <form name="form" role="form">
             <div class="form-group">
               <label for="workspace_name">Name of your company or team</label>
-              <input type="text" class="form-control" ng-model="works.name" value="{{ works.name }}" placeholder="enter workspace name">
+              <input name="wname" type="text" class="form-control" ng-model="works.name" value="{{ works.name }}" placeholder="enter workspace name" required>
+              <label class="error" ng-show="form.wname.$dirty && form.wname.$invalid">
+                <span ng-show="form.wname.$error.required">Workspace name is required.</span>
+              </label>
             </div>
             <div class="form-group">
               <label for="workspace_members">Workspace type</label>
-              <select class="form-control" ng-model="works.type" value="{{ works.type }}">
+              <select name="wtype" class="form-control" ng-model="works.type" value="{{ works.type }}" required>
                 <option value="">-- select workspace type --</option>
                 <option ng-repeat="wt in workspaceType" value="{{ wt.name }}">{{ wt.name }}</option>
               </select>
+              <label class="error" ng-show="form.wtype.$dirty && form.wtype.$invalid">
+                <span ng-show="form.wtype.$error.required">Workspace type is required.</span>
+              </label>
             </div>
             <div class="form-group">
               <label for="workspace_members">Members</label>
@@ -36,8 +42,8 @@
               <textarea class="form-control" ng-model="works.description" value="{{ works.description }}" placeholder="enter workspace description"></textarea>
               <p class="help-block">Details about project and website url etc.</p>
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
+            <button type="button" class="btn btn-default" ng-click="cancelWorkspaceForm();">Cancel</button>
           </form>
         </div>
       </div>

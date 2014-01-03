@@ -124,7 +124,7 @@ angular.module('yokuApp')
         ]
       }
     ];
-    this.addWorkspace = function(name, member, description, type) {
+    this.addWorkspace = function(name, member, type, description) {
       this.workspace.push({
         id: parseInt(Math.random()*1000,10),  // JUGAAD
         name: name,
@@ -135,7 +135,7 @@ angular.module('yokuApp')
         projects: []
       });
     }
-    this.editWorkspace = function(index, name, member, description, type) {
+    this.editWorkspace = function(index, name, member, type, description) {
       this.workspace[index].name = name;
       this.workspace[index].member = member;
       this.workspace[index].description = description;
