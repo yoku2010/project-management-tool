@@ -219,13 +219,13 @@ ul.w-dashboard li a span {
     margin: 0 auto 5px;
     font-size:24px;
 }
-ul.w-dashboard li a span.glyphicon-user {
+span.glyphicon-user.wicon {
     color: #3CBB67;
 }
-ul.w-dashboard li a span.glyphicon-briefcase {
+span.glyphicon-briefcase.wicon {
     color: #BB3CB3;
 }
-ul.w-dashboard li a span.glyphicon-th {
+span.glyphicon-th.wicon {
     color: #29ACEF;
 }
 .panel-body {
@@ -235,4 +235,56 @@ label.error {
     color: red;
     font-weight: normal;
     padding: 5px 2px 0;
+}
+.wp-dashboard {
+    background: #FAFAFA;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
+}
+.wp-header {
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+}
+.wp-header > span.glyphicon {
+    padding: 10px 20px 10px 10px;
+    border-right: 1px solid #CCC;
+    top: 0px;
+}
+.header-text {
+    padding-left:3px;
+}
+.wp-body {
+    background: #FAFAFA;
+    border-top: 1px solid #CACACA;
+    overflow: hidden;
+}
+.w-box {
+    display: block;
+    border-top: 1px solid #CCC;
+    margin-top: -1px;
+}
+.w-box-w, .w-box-add {
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    font-size: 12px;
+    display: inline-block;
+    margin: 0px;
+    border-right: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    margin-top: -1px;
+    background: #FFF;
+}
+w-box-add {
+    
+}
+.w-box-wp {
+    margin: 5px;
+}
+.w-box-close {
+    float: right;
+    margin:7px 7px 0px;
+    color: #555;
+    font-size: 14px;
 }

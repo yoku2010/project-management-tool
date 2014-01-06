@@ -7,19 +7,55 @@
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
-  <!-- start:workspace box-->
+  <!-- start: workspace box-->
     <div class="col-sm-12 center">
       <ul class="w-dashboard">
         <li ng-repeat="wt in newWorkspaceType">
-          <a href="#">
-            <span class="glyphicon  glyphicon-{{wt.icon}}"></span>
+          <a href="#" ng-click="showWorkspaceDetails(wt.name); $event.preventDefault();">
+            <span class="glyphicon  glyphicon-{{wt.icon}} wicon"></span>
             {{ wt.name }} ({{ wt.workspace.length }})
           </a>
         </li>
       </ul>
     </div>
-  <!-- end:workspace box-->
-  <!-- start:todos box-->
+  <!-- end: workspace box-->
+  </div>
+  <div class="row">
+    <!-- start: workspace projects details-->
+    <div class="col-sm-12">
+      <div class="wp-dashboard" ng-repeat="wt in newWorkspaceType" ng-show="data.activeWorkspace == wt.name">
+        <div class="wp-header">
+          <span class="glyphicon  glyphicon-{{wt.icon}} wicon"></span>
+          <span class="header-text">{{ wt.name }}</span>
+          <a class="w-box-close" href="#" ng-click="hideWorkspaceDetails(); $event.preventDefault();"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="wp-body">
+          <div class="w-box" ng-repeat="w in wt.workspace">
+            <div class="w-box-w">
+              <a href="#workspace/{{w.id}}">{{ w.name }}</a>
+            </div>
+            <a href="#workspace/{{w.id}}/{{p.id}}" class="w-box-wp label label-info" ng-repeat="p in w.projects">
+              {{ p.name }}
+            </a>
+            <a href="#workspace/{{w.id}}/project" class="w-box-wp label label-default">
+              <span class="glyphicon  glyphicon-plus wicon"></span> Project
+            </a>
+          </div>
+          <div class="w-box">
+            <div class="w-box-add">
+            <a href="#workspace"><span class="glyphicon  glyphicon-plus wicon"></span> New Workspace</a>
+            </div>
+            <div class="w-box-wp label label-default">
+            No Project
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end: workspace projects details -->
+  </div>
+  <div class="row">
+  <!-- start: todos box-->
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -30,6 +66,6 @@
         </div>
       </div>
     </div>
-  <!-- end:todos box-->
+  <!-- end: todos box-->
   </div>
 </div>
