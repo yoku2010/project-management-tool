@@ -10,8 +10,10 @@ angular.module('yokuApp', [
   $rootScope.menu = Menu;
   $rootScope.user = User;
   $rootScope.workspace = Workspace.workspace;
-  $rootScope.dafaultWorkscape = $rootScope.workspace[0];
   $rootScope.workspaceType = Workspace.workspaceType;
+  $rootScope.data = {};
+  $rootScope.data.defaultWorkspace = { name : "Choose Workspace" };//$rootScope.workspace[0];
+  $rootScope.data.selectedWorkspace = $rootScope.data.defaultWorkspace;
 }]).config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -21,9 +23,17 @@ angular.module('yokuApp', [
       .when('/404', {
         templateUrl: '404.html',
       })
-      .when('/workspace', {
+      .when('/workspace/', {
         templateUrl: 'views/workspace.html',
         controller: 'WorkspaceCtrl'
+      })
+      .when('/workspace/:id', {
+        templateUrl: 'views/workspace.html',
+        controller: 'WorkspaceCtrl'
+      })
+      .when('/workspace-details/:id', {
+        templateUrl: 'views/workspace-details.html',
+        controller: 'WorkspaceDetailsCtrl'
       })
       .otherwise({
         redirectTo: '/404'

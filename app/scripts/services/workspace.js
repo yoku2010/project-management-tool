@@ -25,7 +25,7 @@ angular.module('yokuApp')
     this.workspace = [
       {
         id: 1,
-        name: 'Personal workspace',
+        name: 'Personal Workspace',
         member:['yoku2010@gmail.com'],
         description: 'This is my Personal workspace',
         fix: true,
@@ -78,7 +78,7 @@ angular.module('yokuApp')
         name: 'Codescape',
         member:['yoku2010@gmail.com'],
         description: 'This is my Company workspace',
-        fix: true,
+        fix: false,
         type: 'Personal',
         projects: [
           {
@@ -125,8 +125,9 @@ angular.module('yokuApp')
       }
     ];
     this.addWorkspace = function(name, member, type, description) {
+      var id = parseInt(Math.random()*1000,10);  // JUGAAD
       this.workspace.push({
-        id: parseInt(Math.random()*1000,10),  // JUGAAD
+        id: id,
         name: name,
         member: member,
         description: description,
@@ -134,14 +135,48 @@ angular.module('yokuApp')
         type: type,
         projects: []
       });
+      return id;
+    }
+    this.getWorkspaceById = function(id) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (id == this.workspace[i].id) {
+          return {
+            name: this.workspace[i].name,
+            member: this.workspace[i].member,
+            description: this.workspace[i].description,
+            type: this.workspace[i].type
+          };
+        }
+      }
     }
     this.editWorkspace = function(index, name, member, type, description) {
       this.workspace[index].name = name;
       this.workspace[index].member = member;
       this.workspace[index].description = description;
       this.workspace[index].type = type;
+      return this.workspace[index].id;
+    }
+    this.editWorkspaceById = function(id, name, member, type, description) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (id == this.workspace[i].id) {
+          this.workspace[i].name = name;
+          this.workspace[i].member = member;
+          this.workspace[i].description = description;
+          this.workspace[i].type = type;
+          break;
+        }
+      }
+      return id;
     }
     this.deleteWorkspace = function(index) {
-      this.workspace.slice(index,1);
+      this.workspace.splice(index,1);
+    }
+    this.deleteWorkspaceById = function(id) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (id == this.workspace[i].id) {
+          this.workspace.splice(i,1);
+          break;
+        }
+      }
     }
   });

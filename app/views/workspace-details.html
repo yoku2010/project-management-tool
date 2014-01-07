@@ -1,0 +1,63 @@
+<div id="content_header">
+  <h1>{{ data.selectedWorkspace.name }}</h1>
+  <div class="btn-group w-option">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu pull-right" role="menu">
+      <li><a href="#">Add Project</a></li>
+      <li ng-hide="viewWorkspaceDetails"><a href="#" ng-click="showWorkspaceDetails(); $event.preventDefault();">View Details</a></li>
+      <li ng-show="viewWorkspaceDetails"><a href="#" ng-click="showWorkspaceDetails(); $event.preventDefault();">Hide Details</a></li>
+      <li><a href="#/workspace/{{data.selectedWorkspace.id}}">Edit Details</a></li>
+      <li class="divider"></li>
+      <li>
+        <a href="#" ng-click="deleteWorkspace(); $event.preventDefault();" ng-hide="data.selectedWorkspace.fix">Delete</a>
+      </li>
+      <li>
+        <a href="#" ng-click="$event.preventDefault();" ng-show="data.selectedWorkspace.fix" class="disabled">Delete</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumb">
+  <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
+    <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
+  <a href="#/workspace-details/{{ data.selectedWorkspace.id }}" class="current">{{ data.selectedWorkspace.name }}</a>
+</div>
+<div id="content_body" class="container-fluid">
+  <!-- start: workspace details -->
+  <div class="row" ng-show="viewWorkspaceDetails">
+    <div class="col-sm-12 w-details">
+      <div class="row">
+        <div class="col-sm-3 info-label">
+          Member
+        </div>
+        <div class="col-sm-8 info-data">
+	      <span ng-repeat="email in data.selectedWorkspace.member">
+            {{ email }}
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 info-label">
+          Type
+        </div>
+        <div class="col-sm-8 info-data">
+          {{ data.selectedWorkspace.type }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 info-label">
+          Description
+        </div>
+        <div class="col-sm-8 info-data">
+          {{ data.selectedWorkspace.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: workspace details -->
+  <div class="row">
+    <div class="col-sm-12">
+    </div>
+  </div>
+</div>

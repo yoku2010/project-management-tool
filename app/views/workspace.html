@@ -4,7 +4,8 @@
 <div id="breadcrumb">
   <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
     <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
-  <a href="#workspace" class="current">Add Workspace</a>
+  <a ng-hide="data.selectedWorkspace.id" href="#workspace" class="current">Add Workspace</a>
+  <a ng-show="data.selectedWorkspace.id" href="#workspace" class="current">Edit Workspace</a>
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
@@ -12,7 +13,8 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Add Workspace</h3>
+          <h3 ng-hide="data.selectedWorkspace.id" class="panel-title">Add Workspace</h3>
+          <h3 ng-show="data.selectedWorkspace.id" class="panel-title">Edit Workspace</h3>
         </div>
         <div class="panel-body">
           <form name="form" role="form">
@@ -25,9 +27,8 @@
             </div>
             <div class="form-group">
               <label for="workspace_members">Workspace type</label>
-              <select name="wtype" class="form-control" ng-model="works.type" value="{{ works.type }}" required>
+              <select name="wtype" class="form-control" ng-model="works.type" ng-selected="works.type" ng-options="wt.name as wt.name for wt in workspaceType" required>
                 <option value="">-- select workspace type --</option>
-                <option ng-repeat="wt in workspaceType" value="{{ wt.name }}">{{ wt.name }}</option>
               </select>
               <label class="error" ng-show="form.wtype.$dirty && form.wtype.$invalid">
                 <span ng-show="form.wtype.$error.required">Workspace type is required.</span>
@@ -42,7 +43,8 @@
               <textarea class="form-control" ng-model="works.description" value="{{ works.description }}" placeholder="enter workspace description"></textarea>
               <p class="help-block">Details about project and website url etc.</p>
             </div>
-            <button type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
+            <button ng-hide="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
+            <button ng-show="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editWorkspace();">Submit</button>
             <button type="button" class="btn btn-default" ng-click="cancelWorkspaceForm();">Cancel</button>
           </form>
         </div>

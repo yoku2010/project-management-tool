@@ -23,7 +23,7 @@
   <div class="row">
     <!-- start: workspace projects details-->
     <div class="col-sm-12">
-      <div class="wp-dashboard" ng-repeat="wt in newWorkspaceType" ng-show="data.activeWorkspace == wt.name">
+      <div class="wp-dashboard" ng-repeat="wt in newWorkspaceType" ng-show="local.activeWorkspace == wt.name">
         <div class="wp-header">
           <span class="glyphicon  glyphicon-{{wt.icon}} wicon"></span>
           <span class="header-text">{{ wt.name }}</span>
@@ -32,18 +32,18 @@
         <div class="wp-body">
           <div class="w-box" ng-repeat="w in wt.workspace">
             <div class="w-box-w">
-              <a href="#workspace/{{w.id}}">{{ w.name }}</a>
+              <a href="#/workspace-details/{{w.id}}">{{ w.name }}</a>
             </div>
-            <a href="#workspace/{{w.id}}/{{p.id}}" class="w-box-wp label label-info" ng-repeat="p in w.projects">
+            <a href="#/workspace/{{w.id}}/{{p.id}}" class="w-box-wp label label-info" ng-repeat="p in w.projects">
               {{ p.name }}
             </a>
-            <a href="#workspace/{{w.id}}/project" class="w-box-wp label label-default">
+            <a href="#/workspace/{{w.id}}/project" class="w-box-wp label label-default">
               <span class="glyphicon  glyphicon-plus wicon"></span> Project
             </a>
           </div>
           <div class="w-box">
             <div class="w-box-add">
-            <a href="#workspace"><span class="glyphicon  glyphicon-plus wicon"></span> New Workspace</a>
+            <a href="#/workspace"><span class="glyphicon  glyphicon-plus wicon"></span> New Workspace</a>
             </div>
             <div class="w-box-wp label label-default">
             No Project
