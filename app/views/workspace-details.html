@@ -50,7 +50,7 @@
           Description
         </div>
         <div class="col-sm-8 info-data">
-          {{ data.selectedWorkspace.description }}
+          {{ data.selectedWorkspace.description }} 
         </div>
       </div>
     </div>
@@ -58,6 +58,35 @@
   <!-- end: workspace details -->
   <div class="row">
     <div class="col-sm-12">
+      <div class="wp-dashboard ng-scope">
+        <div class="wp-header">
+          <span class="glyphicon glyphicon-link"></span>
+          <span class="header-text ng-binding">Projects</span>
+        </div>
+        <div class="wp-body">
+          <table class="table project">
+            <thead>
+              <tr>
+                <th><span class="glyphicon glyphicon-stop"></span></th>
+                <th>Name</th>
+                <th>Tasks</th>
+                <th>Description</th>
+              </tr>
+              <tbody>
+                <tr ng-repeat="p in data.selectedWorkspace.projects">
+                  <td><span class="glyphicon glyphicon-stop"></td>
+                  <td><a href="#/workspace-project/{{ data.selectedWorkspace.id }}/{{ p.id }}">{{ p.name }}</a></td>
+                  <td>{{ p.tasks.length }}</td>
+                  <td>{{ p.description }}</td>
+                </tr>
+              </tbody>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

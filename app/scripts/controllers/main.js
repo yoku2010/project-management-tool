@@ -7,7 +7,7 @@ angular.module('yokuApp')
     $rootScope.data.selectedWorkspace = $rootScope.data.defaultWorkspace;
     $scope.showWorkspaceDetails = function(workspaceType) {
       $scope.local.activeWorkspace = workspaceType;
-    }
+    };
     $scope.hideWorkspaceDetails = function() {
       $scope.local.activeWorkspace = null;
     };
@@ -20,8 +20,8 @@ angular.module('yokuApp')
         workspace: []
       };
       for (var j = 0; j < Workspace.workspace.length; j++) {
-      	if (Workspace.workspace[j].type == Workspace.workspaceType[i].name) {
-      	  $scope.newWorkspaceType[i].workspace.push(Workspace.workspace[j]);
+        if (Workspace.workspace[j].type == Workspace.workspaceType[i].name) {
+          $scope.newWorkspaceType[i].workspace.push(Workspace.workspace[j]);
         }
       }
     }

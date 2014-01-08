@@ -1,0 +1,78 @@
+<div id="content_header">
+  <h1>{{ data.selectedProject.name }}</h1>
+  <div class="btn-group w-option">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu pull-right" role="menu">
+      <li><a href="#">Add Task</a></li>
+      <li ng-hide="viewProjectDetails"><a href="#" ng-click="showProjectDetails(); $event.preventDefault();">View Details</a></li>
+      <li ng-show="viewProjectDetails"><a href="#" ng-click="showProjectDetails(); $event.preventDefault();">Hide Details</a></li>
+      <li><a href="#/project/{{data.selectedWorkspace.id}}/{{data.selectedProject.id}}">Edit Details</a></li>
+      <li class="divider"></li>
+      <li>
+        <a href="#" ng-click="deleteProject(); $event.preventDefault();">Delete</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumb">
+  <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
+    <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
+  <a href="#/workspace-details/{{ data.selectedWorkspace.id }}">{{ data.selectedWorkspace.name }}</a>
+  <a href="#/workspace-project/{{ data.selectedWorkspace.id }}/{{data.selectedProject.id}}" class="current">{{ data.selectedProject.name }}</a>
+</div>
+<div id="content_body" class="container-fluid">
+  <!-- start: workspace details -->
+  <div class="row" ng-show="viewProjectDetails">
+    <div class="col-sm-12 w-details">
+      <div class="row">
+        <div class="col-sm-3 info-label">
+          Number of Tasks
+        </div>
+        <div class="col-sm-8 info-data">
+          {{ data.selectedProject.tasks.length }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 info-label">
+          Description
+        </div>
+        <div class="col-sm-8 info-data">
+          {{ data.selectedProject.description }} 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end: workspace details -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="wp-dashboard ng-scope">
+        <div class="wp-header">
+          <span class="glyphicon glyphicon-record"></span>
+          <span class="header-text ng-binding">Tasks</span>
+        </div>
+        <div class="wp-body">
+          <table class="table project">
+            <thead>
+              <tr>
+                <th><span class="glyphicon glyphicon-stop"></span></th>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+              <tbody>
+                <tr ng-repeat="t in data.selectedProject.tasks">
+                  <td><span class="glyphicon glyphicon-stop"></td>
+                  <td><a href="#/workspace-project-task/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}/{{ t.id }}">{{ t.name }}</a></td>
+                  <td>{{ t.description }}</td>
+                </tr>
+              </tbody>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

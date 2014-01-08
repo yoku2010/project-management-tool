@@ -52,7 +52,7 @@ angular.module('yokuApp')
             ]
           },
           {
-            id: 1,
+            id: 2,
             name: 'YoKu',
             description: '',
             tasks:[
@@ -102,7 +102,7 @@ angular.module('yokuApp')
             ]
           },
           {
-            id: 1,
+            id: 2,
             name: 'HTML5 Game',
             description: '',
             tasks:[
@@ -136,7 +136,7 @@ angular.module('yokuApp')
         projects: []
       });
       return id;
-    }
+    };
     this.getWorkspaceById = function(id) {
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
         if (id == this.workspace[i].id) {
@@ -148,14 +148,14 @@ angular.module('yokuApp')
           };
         }
       }
-    }
+    };
     this.editWorkspace = function(index, name, member, type, description) {
       this.workspace[index].name = name;
       this.workspace[index].member = member;
       this.workspace[index].description = description;
       this.workspace[index].type = type;
       return this.workspace[index].id;
-    }
+    };
     this.editWorkspaceById = function(id, name, member, type, description) {
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
         if (id == this.workspace[i].id) {
@@ -167,10 +167,10 @@ angular.module('yokuApp')
         }
       }
       return id;
-    }
+    };
     this.deleteWorkspace = function(index) {
       this.workspace.splice(index,1);
-    }
+    };
     this.deleteWorkspaceById = function(id) {
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
         if (id == this.workspace[i].id) {
@@ -178,5 +178,5 @@ angular.module('yokuApp')
           break;
         }
       }
-    }
+    };
   });

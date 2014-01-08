@@ -20,23 +20,23 @@ angular.module('yokuApp')
     $scope.addWorkspace = function() {
       var id = Workspace.addWorkspace($scope.works.name, $scope.works.member, $scope.works.type, $scope.works.description);
       $scope.resetWorkspaceForm();
-      alert('Workspace Added successfully.');
+      $window.alert('Workspace Added successfully.');
       $location.path('/workspace-details/' + id);
     };
 
     // set data
-    if (void 0 != $routeParams.id) {
+    if (void 0 !== $routeParams.id) {
       for (var i = 0, ln = Workspace.workspace.length; i < ln; i++) {
         if (Workspace.workspace[i].id == $routeParams.id) {
           $rootScope.data.selectedWorkspace = Workspace.workspace[i];
         }
       }
-      $scope.works = Workspace.getWorkspaceById($routeParams.id)
+      $scope.works = Workspace.getWorkspaceById($routeParams.id);
       // edit workspace
       $scope.editWorkspace = function() {
         var id = Workspace.editWorkspaceById($rootScope.data.selectedWorkspace.id, $scope.works.name, $scope.works.member, $scope.works.type, $scope.works.description);
         $scope.resetWorkspaceForm();
-        alert('Workspace Details Updated successfully.');
+        $window.alert('Workspace Details Updated successfully.');
         $location.path('/workspace-details/' + id);
       };
     }
