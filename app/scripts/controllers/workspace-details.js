@@ -2,6 +2,7 @@
 
 angular.module('yokuApp')
   .controller('WorkspaceDetailsCtrl', ['$rootScope','$scope','$routeParams', '$window', '$location', 'Workspace', function ($rootScope, $scope, $routeParams, $window, $location, Workspace) {
+    $rootScope.data.selectedProject = null;
     for (var i = 0, ln = Workspace.workspace.length; i < ln; i++) {
       if (Workspace.workspace[i].id == $routeParams.id) {
         $rootScope.data.selectedWorkspace = Workspace.workspace[i];

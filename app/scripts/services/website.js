@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yokuApp').value('Website', {
-  name: 'YoKu',
+  name: 'YOKU',
   href: '#',
   footer: 'YoKu 2014'
 }).value('Menu', [{

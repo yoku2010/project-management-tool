@@ -60,7 +60,7 @@
             </div>
             <div class="workspace-div">
               <div class="btn-group">
-                <button type="button" class="btn btn-info workspace-btn">{{ data.selectedWorkspace.name }}</button>
+                <button type="button" ng-click="getWorkspace();" class="btn btn-info workspace-btn">{{ data.selectedWorkspace.name }}</button>
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
@@ -75,13 +75,13 @@
             <div class="project-div">
               <ul>
                 <li ng-show="data.selectedWorkspace.id">
-                  <a href="#" class="add-project"><span class="glyphicon glyphicon-plus"></span> Project</a>
+                  <a href="#/project/{{ data.selectedWorkspace.id }}" class="add-project"><span class="glyphicon glyphicon-plus"></span> Project</a>
                 </li>
                 <li ng-hide="data.selectedWorkspace.id">
                   <a href="#" ng-click="$event.preventDefault();" class="no-project"> No Project</a>
                 </li>
                 <li ng-repeat="p in data.selectedWorkspace.projects">
-                  <a href="#" ng-bind="p.name"></a>
+                  <a ng-class="{selected: data.selectedProject.id == p.id}" href="#/workspace-project/{{ data.selectedWorkspace.id }}/{{ p.id }}/" ng-bind="p.name"></a>
                 </li>
               </ul>
             </div>
@@ -132,6 +132,7 @@
         <script src="scripts/controllers/workspace.js"></script>
         <script src="scripts/controllers/workspace-details.js"></script>
         <script src="scripts/controllers/workspace-project.js"></script>
+        <script src="scripts/controllers/project.js"></script>
         <!-- endbuild -->
 </body>
 </html>

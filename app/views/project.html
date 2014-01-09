@@ -1,0 +1,55 @@
+<div id="content_header">
+  <h1>Project</h1>
+</div>
+<div id="breadcrumb">
+  <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
+    <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
+  <a ng-hide="data.selectedWorkspace.id" href="#workspace" class="current">Add Project</a>
+  <a ng-show="data.selectedWorkspace.id" href="#workspace" class="current">Edit Project</a>
+</div>
+<div id="content_body" class="container-fluid">
+  <div class="row">
+  <!-- start:bootstrap box-->
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 ng-hide="data.selectedWorkspace.id" class="panel-title">Add Project</h3>
+          <h3 ng-show="data.selectedWorkspace.id" class="panel-title">Edit Project</h3>
+        </div>
+        <div class="panel-body">
+          <form name="form" role="form">
+            <div class="form-group">
+              <label for="workspace_name">Name of your company or team</label>
+              <input name="wname" type="text" class="form-control" ng-model="works.name" value="{{ works.name }}" placeholder="enter workspace name" required>
+              <label class="error" ng-show="form.wname.$dirty && form.wname.$invalid">
+                <span ng-show="form.wname.$error.required">Workspace name is required.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="workspace_members">Workspace type</label>
+              <select name="wtype" class="form-control" ng-model="works.type" ng-selected="works.type" ng-options="wt.name as wt.name for wt in workspaceType" required>
+                <option value="">-- select workspace type --</option>
+              </select>
+              <label class="error" ng-show="form.wtype.$dirty && form.wtype.$invalid">
+                <span ng-show="form.wtype.$error.required">Workspace type is required.</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="workspace_members">Members</label>
+              <input type="text" class="form-control" ng-model="works.member" value="{{ works.member }}" placeholder="enter members name">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" ng-model="works.description" value="{{ works.description }}" placeholder="enter workspace description"></textarea>
+              <p class="help-block">Details about project and website url etc.</p>
+            </div>
+            <button ng-hide="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
+            <button ng-show="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editWorkspace();">Submit</button>
+            <button type="button" class="btn btn-default" ng-click="cancelWorkspaceForm();">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- end:bootstrap box-->
+  </div>
+</div>

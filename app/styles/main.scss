@@ -54,10 +54,14 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #EAEAEA!important;
-    padding:11px;
+    padding:14px 10px 10px;
+}
+.company-name label {
+    font-weight: normal;
+    font-size: 26px;
 }
 .company-name span {
-    margin-right: 10px;
+    margin-right: 1px;
     color: #269abc;;
 }
 .workspace-btn {

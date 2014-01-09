@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
-      <li><a href="#">Add Project</a></li>
+      <li><a href="#/project/{{ data.selectedWorkspace.id }}">Add Project</a></li>
       <li ng-hide="viewWorkspaceDetails"><a href="#" ng-click="showWorkspaceDetails(); $event.preventDefault();">View Details</a></li>
       <li ng-show="viewWorkspaceDetails"><a href="#" ng-click="showWorkspaceDetails(); $event.preventDefault();">Hide Details</a></li>
       <li><a href="#/workspace/{{data.selectedWorkspace.id}}">Edit Details</a></li>

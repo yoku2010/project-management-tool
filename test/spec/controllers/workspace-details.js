@@ -17,6 +17,6 @@ describe('Controller: WorkspaceDetailsCtrl', function () {
   }));
 
   it('should attach a list of viewWorkspaceDetails to the scope', function () {
-    expect(scope.viewWorkspaceDetails).toBe(true);
+    expect(scope.viewWorkspaceDetails).toBe(false);
   });
 });

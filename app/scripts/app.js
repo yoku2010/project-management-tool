@@ -5,7 +5,7 @@ angular.module('yokuApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute'
-]).run(['$rootScope', 'Website', 'Menu', 'User', 'Workspace', function ($rootScope, Website, Menu, User, Workspace) {
+]).run(['$rootScope', '$location', 'Website', 'Menu', 'User', 'Workspace', function ($rootScope, $location, Website, Menu, User, Workspace) {
   $rootScope.website = Website;
   $rootScope.menu = Menu;
   $rootScope.user = User;
@@ -14,6 +14,11 @@ angular.module('yokuApp', [
   $rootScope.data = {};
   $rootScope.data.defaultWorkspace = { name : 'Choose Workspace' };//$rootScope.workspace[0];
   $rootScope.data.selectedWorkspace = $rootScope.data.defaultWorkspace;
+  $rootScope.getWorkspace = function() {
+    if (void 0 !== $rootScope.data.selectedWorkspace.id) {
+      $location.path('/workspace-details/' + $rootScope.data.selectedWorkspace.id);
+    }
+  };
 }]).config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -38,6 +43,10 @@ angular.module('yokuApp', [
       .when('/workspace-project/:id/:pid', {
         templateUrl: 'views/workspace-project.html',
         controller: 'WorkspaceProjectCtrl'
+      })
+      .when('/project/:id', {
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl'
       })
       .otherwise({
         redirectTo: '/404'
