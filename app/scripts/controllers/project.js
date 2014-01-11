@@ -2,9 +2,8 @@
 
 angular.module('yokuApp')
   .controller('ProjectCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    // cancel workspace form
+    $scope.cancelWorkspaceForm = function() {
+      $location.path('/');
+    };
   });

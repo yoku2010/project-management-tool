@@ -13,7 +13,7 @@ angular.module('yokuApp')
 
     // cancel workspace form
     $scope.cancelWorkspaceForm = function() {
-      $window.history.back();
+      $location.path('/');
     };
 
     // add new workspace

@@ -4,8 +4,8 @@
 <div id="breadcrumb">
   <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
     <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
-  <a ng-hide="data.selectedWorkspace.id" href="#workspace" class="current">Add Project</a>
-  <a ng-show="data.selectedWorkspace.id" href="#workspace" class="current">Edit Project</a>
+  <a ng-hide="data.selectedProject.id" href="#/project/{{ data.selectedWorkspace.id }}" class="current">Add Project</a>
+  <a ng-show="data.selectedProject.id" href="#/project/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}" class="current">Edit Project</a>
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
