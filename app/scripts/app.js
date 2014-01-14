@@ -48,6 +48,10 @@ angular.module('yokuApp', [
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl'
       })
+      .when('/project/:id/:pid', {
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl'
+      })
       .otherwise({
         redirectTo: '/404'
       });

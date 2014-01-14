@@ -25,7 +25,7 @@ angular.module('yokuApp')
     this.workspace = [
       {
         id: 1,
-        name: 'Personal Workspace',
+        name: 'Personal',
         member:['yoku2010@gmail.com'],
         description: 'This is my Personal workspace',
         fix: true,
@@ -140,21 +140,14 @@ angular.module('yokuApp')
     this.getWorkspaceById = function(id) {
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
         if (id == this.workspace[i].id) {
-          return {
+          return [this.workspace[i], {
             name: this.workspace[i].name,
             member: this.workspace[i].member,
             description: this.workspace[i].description,
             type: this.workspace[i].type
-          };
+          }];
         }
       }
-    };
-    this.editWorkspace = function(index, name, member, type, description) {
-      this.workspace[index].name = name;
-      this.workspace[index].member = member;
-      this.workspace[index].description = description;
-      this.workspace[index].type = type;
-      return this.workspace[index].id;
     };
     this.editWorkspaceById = function(id, name, member, type, description) {
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
@@ -163,10 +156,9 @@ angular.module('yokuApp')
           this.workspace[i].member = member;
           this.workspace[i].description = description;
           this.workspace[i].type = type;
-          break;
+          return id;
         }
       }
-      return id;
     };
     this.deleteWorkspace = function(index) {
       this.workspace.splice(index,1);
@@ -175,7 +167,70 @@ angular.module('yokuApp')
       for (var i = 0, ln = this.workspace.length; i < ln; i++) {
         if (id == this.workspace[i].id) {
           this.workspace.splice(i,1);
-          break;
+          return true;
+        }
+      }
+    };
+    this.getProjectById = function (wid, pid) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (wid == this.workspace[i].id) {
+          if (void 0 != this.workspace[i].projects) {
+            for (var j = 0, pln = this.workspace[i].projects.length; j < pln; j++ ) {
+              if (pid == this.workspace[i].projects[j].id) {
+                return [this.workspace[i], this.workspace[i].projects[j], {
+                  name: this.workspace[i].projects[j].name,
+                  description: this.workspace[i].projects[j].description,
+                  wid: this.workspace[i].id
+                }];
+              }
+            }
+          }
+        }
+      }
+    };
+    this.addProject = function (name, wid, description) {
+      var pid = parseInt(Math.random()*1000,10);  // JUGAAD
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (wid == this.workspace[i].id) {
+          if (void 0 == this.workspace[i].projects) {
+            this.workspace[i].projects = [];
+          }
+          this.workspace[i].projects.push({
+            id: pid,
+            name: name,
+            description: description,
+            tasks: []
+          });
+          return pid;
+        }
+      }
+    };
+    this.editProject = function (pid, name, wid, description) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (wid == this.workspace[i].id) {
+          if (void 0 != this.workspace[i].projects) {
+            for (var j = 0, pln = this.workspace[i].projects.length; j < pln; j++ ) {
+              if (pid == this.workspace[i].projects[j].id) {
+                this.workspace[i].projects[j].name = name;
+                this.workspace[i].projects[j].description = description;
+                return pid;
+              }
+            }
+          }
+        }
+      }
+    };
+    this.deleteProjectById = function(wid, pid) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (wid == this.workspace[i].id) {
+          if (void 0 != this.workspace[i].projects) {
+            for (var j = 0, pln = this.workspace[i].projects.length; j < pln; j++ ) {
+              if (pid == this.workspace[i].projects[j].id) {
+                this.workspace[i].projects.splice(j, 1);
+                return true;
+              }
+            }
+          }
         }
       }
     };

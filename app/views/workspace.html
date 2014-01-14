@@ -5,7 +5,7 @@
   <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
     <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
   <a ng-hide="data.selectedWorkspace.id" href="#workspace" class="current">Add Workspace</a>
-  <a ng-show="data.selectedWorkspace.id" href="#workspace" class="current">Edit Workspace</a>
+  <a ng-show="data.selectedWorkspace.id" href="#workspace/{{ data.selectedWorkspace.id }}" class="current">Edit Workspace</a>
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
@@ -45,7 +45,8 @@
             </div>
             <button ng-hide="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
             <button ng-show="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editWorkspace();">Submit</button>
-            <button type="button" class="btn btn-default" ng-click="cancelWorkspaceForm();">Cancel</button>
+            <button ng-hide="data.selectedWorkspace.id" type="button" class="btn btn-default" ng-click="cancelAddWorkspaceForm();">Cancel</button>
+            <button ng-show="data.selectedWorkspace.id" type="button" class="btn btn-default" ng-click="cancelEditWorkspaceForm();">Cancel</button>
           </form>
         </div>
       </div>

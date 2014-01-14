@@ -3,18 +3,28 @@
 angular.module('yokuApp')
   .controller('WorkspaceDetailsCtrl', ['$rootScope','$scope','$routeParams', '$window', '$location', 'Workspace', function ($rootScope, $scope, $routeParams, $window, $location, Workspace) {
     $rootScope.data.selectedProject = null;
-    for (var i = 0, ln = Workspace.workspace.length; i < ln; i++) {
-      if (Workspace.workspace[i].id == $routeParams.id) {
-        $rootScope.data.selectedWorkspace = Workspace.workspace[i];
-      }
+    // to get workspace
+    var wArr = Workspace.getWorkspaceById($routeParams.id);
+    if (void 0 != wArr) {
+      $rootScope.data.selectedWorkspace = wArr[0];
     }
+    // to delete workspace.
     $scope.deleteWorkspace = function() {
       if($window.confirm('Are you sure you want to delete this Workspace?')) {
-        Workspace.deleteWorkspaceById($rootScope.data.selectedWorkspace.id);
-        $location.path('/');
+        var status = Workspace.deleteWorkspaceById($rootScope.data.selectedWorkspace.id);  // delete workspace
+        if (status) {
+          $location.path('/');
+        }
+        else {
+          $window.alert("Invalid data, please try again later.");
+        }
       }
     };
+
+    // workspace details will hide by default.
     $scope.viewWorkspaceDetails = false;
+
+    // hide/show workspace details.
     $scope.showWorkspaceDetails = function() {
       $scope.viewWorkspaceDetails = $scope.viewWorkspaceDetails ? false : true;
     };

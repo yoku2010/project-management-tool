@@ -13,39 +13,37 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 ng-hide="data.selectedWorkspace.id" class="panel-title">Add Project</h3>
-          <h3 ng-show="data.selectedWorkspace.id" class="panel-title">Edit Project</h3>
+          <h3 ng-hide="data.selectedProject.id" class="panel-title">Add Project</h3>
+          <h3 ng-show="data.selectedProject.id" class="panel-title">Edit Project</h3>
         </div>
         <div class="panel-body">
           <form name="form" role="form">
             <div class="form-group">
-              <label for="workspace_name">Name of your company or team</label>
-              <input name="wname" type="text" class="form-control" ng-model="works.name" value="{{ works.name }}" placeholder="enter workspace name" required>
-              <label class="error" ng-show="form.wname.$dirty && form.wname.$invalid">
-                <span ng-show="form.wname.$error.required">Workspace name is required.</span>
+              <label for="project_name">Project Name</label>
+              <input name="project_name" type="text" class="form-control" ng-model="project.name" value="{{ project.name }}" placeholder="enter project name" required>
+              <label class="error" ng-show="form.project_name.$dirty && form.project_name.$invalid">
+                <span ng-show="form.project_name.$error.required">Project name is required.</span>
               </label>
             </div>
             <div class="form-group">
-              <label for="workspace_members">Workspace type</label>
-              <select name="wtype" class="form-control" ng-model="works.type" ng-selected="works.type" ng-options="wt.name as wt.name for wt in workspaceType" required>
-                <option value="">-- select workspace type --</option>
+              <label for="workspace_id">Workspace</label>
+              <select name="workspace_id" class="form-control" ng-model="project.wid"required>
+                <option value="">-- select workspace --</option>
+                <option ng-repeat="ws in workspace" ng-selected="project.wid == ws.id" value="ws.id" >{{ ws.name }}</option>
               </select>
-              <label class="error" ng-show="form.wtype.$dirty && form.wtype.$invalid">
-                <span ng-show="form.wtype.$error.required">Workspace type is required.</span>
+              <label class="error" ng-show="form.workspace_id.$dirty && form.workspace_id.$invalid">
+                <span ng-show="form.workspace_id.$error.required">Workspace is required.</span>
               </label>
-            </div>
-            <div class="form-group">
-              <label for="workspace_members">Members</label>
-              <input type="text" class="form-control" ng-model="works.member" value="{{ works.member }}" placeholder="enter members name">
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" ng-model="works.description" value="{{ works.description }}" placeholder="enter workspace description"></textarea>
-              <p class="help-block">Details about project and website url etc.</p>
+              <textarea class="form-control" ng-model="project.description" value="{{ project.description }}" placeholder="enter project description"></textarea>
+              <p class="help-block">Details about project.</p>
             </div>
-            <button ng-hide="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addWorkspace();">Submit</button>
-            <button ng-show="data.selectedWorkspace.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editWorkspace();">Submit</button>
-            <button type="button" class="btn btn-default" ng-click="cancelWorkspaceForm();">Cancel</button>
+            <button ng-hide="data.selectedProject.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addProject();">Submit</button>
+            <button ng-show="data.selectedProject.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editProject();">Submit</button>
+            <button ng-hide="data.selectedProject.id" type="button" class="btn btn-default" ng-click="cancelAddProjectForm();">Cancel</button>
+            <button ng-show="data.selectedProject.id" type="button" class="btn btn-default" ng-click="cancelEditProjectForm();">Cancel</button>
           </form>
         </div>
       </div>

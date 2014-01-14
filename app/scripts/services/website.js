@@ -5,7 +5,7 @@ angular.module('yokuApp').value('Website', {
   href: '#',
   footer: 'YoKu 2014'
 }).value('Menu', [{
-  text: 'Workspace',
+  text: 'Task',
   href: '#',
   className: 'active'
 },{
