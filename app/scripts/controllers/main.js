@@ -3,7 +3,6 @@
 angular.module('yokuApp')
   .controller('MainCtrl', ['$rootScope', '$scope', 'Workspace', function ($rootScope, $scope, Workspace) {
     $scope.newWorkspaceType = []; // to store saparated workspaces by type
-    $scope.taskList = []; // to store all the tasks in list
     $scope.local = {};  // to store current page data object
     $rootScope.data.selectedWorkspace = $rootScope.data.defaultWorkspace; // select default workspace
 
@@ -32,7 +31,7 @@ angular.module('yokuApp')
           $scope.newWorkspaceType[i].workspace.push(Workspace.workspace[j]);
         }
         if (taskListNotFilled) {
-          
+          //$scope.taskList.push();
         }
       }
       taskListNotFilled = false;
