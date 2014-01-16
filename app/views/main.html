@@ -34,7 +34,7 @@
             <div class="w-box-w">
               <a href="#/workspace-details/{{w.id}}">{{ w.name }}</a>
             </div>
-            <a href="#/workspace/{{w.id}}/{{p.id}}" class="w-box-wp label label-info" ng-repeat="p in w.projects">
+            <a href="#/workspace-project/{{w.id}}/{{p.id}}" class="w-box-wp label label-info" ng-repeat="p in w.projects">
               {{ p.name }}
             </a>
             <a href="#/project/{{w.id}}/" class="w-box-wp label label-default">
@@ -61,8 +61,32 @@
         <div class="wp-header">
           <span class="glyphicon glyphicon-record"></span>
           <span class="header-text">{{ user.fname }}'s Tasks</span>
+          <a class="w-box-search" href="#" ng-click="hideShowSearch(); $event.preventDefault();"><span class="glyphicon glyphicon-search"></span></a>
+          <input ng-show="tsb" class="form-control s-box" type="text" ng-model="searchTask"/>
         </div>
         <div class="wp-body">
+          <table class="table project">
+            <thead>
+              <tr>
+                <th><span class="glyphicon glyphicon-stop"></span></th>
+                <th>Name</th>
+                <th>Project</th>
+                <th>Workspace</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="task in taskList | filter:searchTask:'name' | orderBy:'status':reverse">
+                <td><span class="glyphicon glyphicon-stop"></span></td>
+                <td><a href="#/project-task/{{ task.workspace.id }}/{{ task.project.id }}/{{ task.id }}">{{ task.name }}</a></td>
+                <td><a href="#/workspace-project/{{ task.workspace.id }}/{{ task.project.id }}">{{ task.project.name }}</a></td>
+                <td><a href="#/workspace-details/{{ task.workspace.id }}">{{ task.workspace.name }}</a></td>
+                <td>{{ task.duedate }}</td>
+                <td><span ng-class="{ 'glyphicon glyphicon-retweet task0': task.status == 0, 'glyphicon glyphicon-saved task1': task.status == 1 }"></span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

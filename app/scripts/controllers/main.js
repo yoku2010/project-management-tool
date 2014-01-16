@@ -3,6 +3,7 @@
 angular.module('yokuApp')
   .controller('MainCtrl', ['$rootScope', '$scope', 'Workspace', function ($rootScope, $scope, Workspace) {
     $scope.newWorkspaceType = []; // to store saparated workspaces by type
+    $scope.taskList = []; // to store all the tasks in list
     $scope.local = {};  // to store current page data object
     $rootScope.data.selectedWorkspace = $rootScope.data.defaultWorkspace; // select default workspace
 
@@ -16,6 +17,11 @@ angular.module('yokuApp')
       $scope.local.activeWorkspace = null;
     };
 
+    // task search box hide show
+    $scope.tsb = false;
+    $scope.hideShowSearch = function () {
+      $scope.tsb = $scope.tsb ? false : true;
+    }
     var taskListNotFilled = true;
     // to saparate workspaces by type
     for (var i = 0; i < Workspace.workspaceType.length; i++) {
@@ -31,7 +37,13 @@ angular.module('yokuApp')
           $scope.newWorkspaceType[i].workspace.push(Workspace.workspace[j]);
         }
         if (taskListNotFilled) {
-          //$scope.taskList.push();
+          for (var k = 0, kl = Workspace.workspace[j].projects.length; k < kl; k++) {
+            for (var l = 0, ll = Workspace.workspace[j].projects[k].tasks.length; l < ll; l++) {
+              $scope.taskList[$scope.taskList.length] = Workspace.workspace[j].projects[k].tasks[l];
+              $scope.taskList[$scope.taskList.length-1]["project"] = Workspace.workspace[j].projects[k];
+              $scope.taskList[$scope.taskList.length-1]["workspace"] = Workspace.workspace[j];
+            }
+          }
         }
       }
       taskListNotFilled = false;

@@ -224,7 +224,6 @@ ul.w-dashboard {
 ul.w-dashboard li {
     list-style: none;
     padding: 0;
-    min-width: 200px;
     border: 1px solid #d5d5d5;
     border-radius: 4px 4px 4px 4px;
     -webkit-box-shadow: 0 1px 0 0 #FFFFFF inset, 0 1px 0 rgba(255,255,255,0.4);
@@ -319,14 +318,20 @@ w-box-add {
 .w-box-wp {
     margin: 5px;
 }
-.w-box-close {
+.w-box-close, .w-box-search {
     float: right;
     margin:7px 7px 0px;
     color: #999;
     font-size: 14px;
 }
-.w-box-close:hover {
+.w-box-close:hover,.w-box-search:hover {
     color: #555;
+}
+.wp-header input {
+    float: right;
+    margin: 3px 0px 0px;
+    width: 150px;
+    height: 26px;
 }
 .w-option {
     float:right;
@@ -379,4 +384,10 @@ a.disabled:hover {
     font-size: 12px;
     color: #555;
     height: 40px;
+}
+.task0 {
+    color: #2998DC;
+}
+.task1 {
+    color: green;
 }
