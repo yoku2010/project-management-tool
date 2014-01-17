@@ -77,7 +77,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="task in taskList | filter:searchTask:'name' | orderBy:'status':reverse">
+              <tr ng-animate="{enter: 'repeat-enter',
+                    leave: 'repeat-leave',
+                    move: 'repeat-move'}" ng-repeat="task in taskList | filter:{name:searchTask, project.name: searchTask} | orderBy:'status':reverse">
                 <td><span class="glyphicon glyphicon-stop"></span></td>
                 <td><a href="#/project-task/{{ task.workspace.id }}/{{ task.project.id }}/{{ task.id }}">{{ task.name }}</a></td>
                 <td><a href="#/workspace-project/{{ task.workspace.id }}/{{ task.project.id }}">{{ task.project.name }}</a></td>

@@ -4,7 +4,8 @@ angular.module('yokuApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ]).run(['$rootScope', '$location', 'Website', 'Menu', 'User', 'Workspace', function ($rootScope, $location, Website, Menu, User, Workspace) {
   $rootScope.website = Website;
   $rootScope.menu = Menu;

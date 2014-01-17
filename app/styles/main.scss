@@ -1,6 +1,27 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+/* start: animation */
+.repeat-enter-start, .repeat-leave-start, .repeat-move-start {
+    -webkit-transition:all linear 5s;
+    -moz-transition:all linear 5s;
+    -ms-transition:all linear 5s;
+    -o-transition:all linear 5s;
+    transition:all linear 5s;
+}
+.repeat-enter-setup {
+    opacity:0;
+}
+.repeat-enter-setup.repeat-enter-start {
+    opacity:1;
+}
+.repeat-leave-setup {
+    opacity:1;
+}
+.repeat-leave-setup.repeat-leave-start {
+    opacity:0;
+}
+/* start: animation */
 section {
     margin-top:51px;
     position:relative;
