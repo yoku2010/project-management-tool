@@ -17,11 +17,13 @@ angular.module('yokuApp')
       $scope.local.activeWorkspace = null;
     };
 
-    // task search box hide show
-    $scope.tsb = false;
-    $scope.hideShowSearch = function () {
-      $scope.tsb = $scope.tsb ? false : true;
-    }
+    // task search function
+    $scope.tSearch = function (row) {
+      var nm = ((row.name || '') + (row.project.name || '') + (row.workspace.name || '') + (row.duedate || '')).toLowerCase();
+      $scope.query = $scope.query || '';
+      return !!(nm.indexOf($scope.query.toLowerCase() || '') !== -1);
+    };
+
     var taskListNotFilled = true;
     // to saparate workspaces by type
     for (var i = 0; i < Workspace.workspaceType.length; i++) {
