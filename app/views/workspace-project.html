@@ -52,25 +52,14 @@
           <span class="header-text ng-binding">Tasks</span>
         </div>
         <div class="wp-body">
-          <table class="table project">
-            <thead>
-              <tr>
-                <th><span class="glyphicon glyphicon-stop"></span></th>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-              <tbody>
-                <tr ng-repeat="t in data.selectedProject.tasks">
-                  <td><span class="glyphicon glyphicon-stop"></td>
-                  <td><a href="#/workspace-project-task/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}/{{ t.id }}">{{ t.name }}</a></td>
-                  <td>{{ t.description }}</td>
-                </tr>
-              </tbody>
-            </thead>
-            <tbody>
-              
-            </tbody>
-          </table>
+          <div class="tasks-div">
+            <div class="task-div" ng-repeat="t in data.selectedProject.tasks">
+              <a href="#" ng-click=" $event.preventDefault();">{{ t.name }}</a>
+            </div>
+          </div>
+          <div class="tasks-details">
+            
+          </div>
         </div>
       </div>
     </div>

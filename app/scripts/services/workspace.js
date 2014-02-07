@@ -98,6 +98,32 @@ angular.module('yokuApp')
                 followers: ['yoku2010@gmail.com'],
                 comments: [],
                 logs: []
+              },
+              {
+                id: 2,
+                name: 'Coding',
+                description: '',
+                creation: '30-12-2013',
+                updation: '31-12-2013',
+                duedate: '02-01-2014',
+                status: 0,
+                assignTo: ['yoku2010@gmail.com'],
+                followers: ['yoku2010@gmail.com'],
+                comments: [],
+                logs: []
+              },
+              {
+                id: 3,
+                name: 'Testing',
+                description: '',
+                creation: '30-12-2013',
+                updation: '31-12-2013',
+                duedate: '02-01-2014',
+                status: 0,
+                assignTo: ['yoku2010@gmail.com'],
+                followers: ['yoku2010@gmail.com'],
+                comments: [],
+                logs: []
               }
             ]
           },

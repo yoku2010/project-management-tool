@@ -456,3 +456,29 @@ a.disabled:hover {
   line-height:0;
   opacity:0;
 }
+.tasks-div {
+    height: 400px;
+    float:left;
+}
+.task-div {
+    clear: both;
+    float: left;
+    display:inline-block;
+}
+.task-div a {
+    padding: 10px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #DFDFDF;
+    display: inline-block;
+    width: 180px;
+    font-size: 12px;
+}
+.task-div a:hover {
+    background: #f0f0f0;
+}
+.tasks-details {
+    background: #f0f0f0;
+    border-left: 1px solid #DFDFDF;
+    height: 400px;
+    margin-left:180px;
+}
