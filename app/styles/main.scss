@@ -460,12 +460,12 @@ a.disabled:hover {
     height: 400px;
     float:left;
 }
-.task-div {
+.task-div, .add-task-div {
     clear: both;
     float: left;
     display:inline-block;
 }
-.task-div a {
+.task-div a, .no-task-div {
     padding: 10px;
     background: #f8f8f8;
     border-bottom: 1px solid #DFDFDF;
@@ -473,12 +473,63 @@ a.disabled:hover {
     width: 180px;
     font-size: 12px;
 }
-.task-div a:hover {
+.task-div a:hover, .task-div a.active {
     background: #f0f0f0;
+    color: #2a6496;
+}
+.no-task-div {
+    color: #888;
+}
+.add-task-div a{
+    padding: 10px;
+    /*background: #F8F8F8;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;*/
+    display: inline-block;
+    width: 180px;
+    font-size: 12px;
 }
 .tasks-details {
     background: #f0f0f0;
     border-left: 1px solid #DFDFDF;
     height: 400px;
     margin-left:180px;
+}
+.task-header {
+    padding: 10px;
+    border-bottom: 1px solid #EAEAEA;
+    background-color: #FAFAFA;
+}
+.task-content {
+    padding: 10px;
+    position: relative;
+}
+.task-status {
+    float: right;
+    font-size: 12px;
+    border: 1px solid #DADADA;
+    background-color: #FAFAFA;
+    overflow: hidden;
+    border-radius: 4px 4px 4px 4px;
+}
+.task-status span {
+    float: left;
+    padding: 5px 8px;
+    display: block;
+    width: 28px!important;
+}
+.task-text {
+    float: left;
+    background-color: #EAEAEA;
+    padding: 5px;
+    border-left: 1px solid #DADADA;
+}
+.task-change-status {
+    float: left;
+}
+.task-name {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px 5px;
 }

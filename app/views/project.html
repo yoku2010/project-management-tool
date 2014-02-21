@@ -4,8 +4,8 @@
 <div id="breadcrumb">
   <a href="#" title="" class="tip-bottom" data-original-title="Go to Home">
     <span class="glyphicon glyphicon-th-large"></span> Workspace</a>
-  <a ng-hide="data.selectedProject.id" href="#/project/{{ data.selectedWorkspace.id }}" class="current">Add Project</a>
-  <a ng-show="data.selectedProject.id" href="#/project/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}" class="current">Edit Project</a>
+  <a ng-show="formType == 'add'" href="#/project/{{ data.selectedWorkspace.id }}" class="current">Add Project</a>
+  <a ng-show="formType == 'edit'" href="#/project/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}" class="current">Edit Project</a>
 </div>
 <div id="content_body" class="container-fluid">
   <div class="row">
@@ -13,8 +13,8 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 ng-hide="data.selectedProject.id" class="panel-title">Add Project</h3>
-          <h3 ng-show="data.selectedProject.id" class="panel-title">Edit Project</h3>
+          <h3 ng-show="formType == 'add'" class="panel-title">Add Project</h3>
+          <h3 ng-show="formType == 'edit'" class="panel-title">Edit Project</h3>
         </div>
         <div class="panel-body">
           <form name="form" role="form">
@@ -40,10 +40,10 @@
               <textarea class="form-control" ng-model="project.description" value="{{ project.description }}" placeholder="enter project description"></textarea>
               <p class="help-block">Details about project.</p>
             </div>
-            <button ng-hide="data.selectedProject.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addProject();">Submit</button>
-            <button ng-show="data.selectedProject.id" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editProject();">Submit</button>
-            <button ng-hide="data.selectedProject.id" type="button" class="btn btn-default" ng-click="cancelAddProjectForm();">Cancel</button>
-            <button ng-show="data.selectedProject.id" type="button" class="btn btn-default" ng-click="cancelEditProjectForm();">Cancel</button>
+            <button ng-show="formType == 'add'" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addProject();">Submit</button>
+            <button ng-show="formType == 'edit'" type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="editProject();">Submit</button>
+            <button ng-show="formType == 'add'" type="button" class="btn btn-default" ng-click="cancelAddProjectForm();">Cancel</button>
+            <button ng-show="formType == 'edit'" type="button" class="btn btn-default" ng-click="cancelEditProjectForm();">Cancel</button>
           </form>
         </div>
       </div>

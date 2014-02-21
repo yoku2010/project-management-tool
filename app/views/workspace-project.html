@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
-      <li><a href="#">Add Task</a></li>
+      <li><a href="#/task/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}/">Add Task</a></li>
       <li ng-hide="viewProjectDetails"><a href="#" ng-click="showProjectDetails(); $event.preventDefault();">View Details</a></li>
       <li ng-show="viewProjectDetails"><a href="#" ng-click="showProjectDetails(); $event.preventDefault();">Hide Details</a></li>
       <li><a href="#/project/{{data.selectedWorkspace.id}}/{{data.selectedProject.id}}">Edit Details</a></li>
@@ -54,11 +54,38 @@
         <div class="wp-body">
           <div class="tasks-div">
             <div class="task-div" ng-repeat="t in data.selectedProject.tasks">
-              <a href="#" ng-click=" $event.preventDefault();">{{ t.name }}</a>
+              <a ng-class="{ 'active': t.id == data.selectedTask.id }" href="#/workspace-project/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}/{{ t.id }}">{{ t.name }}</a>
+            </div>
+            <div ng-hide="data.selectedProject.tasks.length" class="task-div no-task-div"> No Task Exist</div>
+            <div class="add-task-div">
+              <a href="#/task/{{ data.selectedWorkspace.id }}/{{ data.selectedProject.id }}/"><span class="glyphicon glyphicon-plus"></span> Task</a>
             </div>
           </div>
           <div class="tasks-details">
-            
+            <div class="task-header">
+              <div ng-show="data.selectedTask.status == 0" class="task-status">
+                <span class="glyphicon glyphicon-retweet task0"></span>
+                <div class="task-text">In Process</div>
+              </div>
+              <div ng-show="data.selectedTask.status == 1" class="task-status">
+                <span class="glyphicon glyphicon-saved task1"></span>
+                <div class="task-text">Complete</div>
+              </div>
+              <a href="#" ng-click="changeState(); $event.preventDefault();" class="task-change-status">
+                <span ng-class="{ 'glyphicon glyphicon-unchecked': data.selectedTask.status == 0, 'glyphicon glyphicon-check': data.selectedTask.status == 1 }"></span>
+              </a>
+              <div class="task-name">{{ data.selectedTask.name }}</div>
+              <div class="task-desc">{{ data.selectedTask.description }}</div>
+              <div class="task-creation">{{ data.selectedTask.creation }}</div>
+              <div class="task-updation">{{ data.selectedTask.updation }}</div>
+              <div class="task-duedate">{{ data.selectedTask.duedate }}</div>
+              <div class="task-assignTo">{{ data.selectedTask.assignTo }}</div>
+            </div>
+            <div class="task-content">
+              <div class="task-followers">{{ data.selectedTask.followers }}</div>
+              <div class="task-logs">{{ data.selectedTask.logs }}</div>
+              <div class="task-comments">{{ data.selectedTask.comments }}</div>
+            </div>
           </div>
         </div>
       </div>

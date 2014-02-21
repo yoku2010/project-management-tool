@@ -45,6 +45,10 @@ angular.module('yokuApp', [
         templateUrl: 'views/workspace-project.html',
         controller: 'WorkspaceProjectCtrl'
       })
+      .when('/workspace-project/:id/:pid/:tid', {
+        templateUrl: 'views/workspace-project.html',
+        controller: 'WorkspaceProjectCtrl'
+      })
       .when('/project/:id', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl'

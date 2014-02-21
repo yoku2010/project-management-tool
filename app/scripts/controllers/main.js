@@ -21,7 +21,7 @@ angular.module('yokuApp')
     $scope.tSearch = function (row) {
       var nm = ((row.name || '') + (row.project.name || '') + (row.workspace.name || '') + (row.duedate || '')).toLowerCase();
       $scope.query = $scope.query || '';
-      return !!(nm.indexOf($scope.query.toLowerCase() || '') !== -1);
+      return (nm.indexOf($scope.query.toLowerCase() || '') !== -1);
     };
 
     var taskListNotFilled = true;
@@ -42,8 +42,8 @@ angular.module('yokuApp')
           for (var k = 0, kl = Workspace.workspace[j].projects.length; k < kl; k++) {
             for (var l = 0, ll = Workspace.workspace[j].projects[k].tasks.length; l < ll; l++) {
               $scope.taskList[$scope.taskList.length] = Workspace.workspace[j].projects[k].tasks[l];
-              $scope.taskList[$scope.taskList.length-1]["project"] = Workspace.workspace[j].projects[k];
-              $scope.taskList[$scope.taskList.length-1]["workspace"] = Workspace.workspace[j];
+              $scope.taskList[$scope.taskList.length-1].project = Workspace.workspace[j].projects[k];
+              $scope.taskList[$scope.taskList.length-1].workspace = Workspace.workspace[j];
             }
           }
         }

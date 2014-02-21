@@ -106,7 +106,7 @@ angular.module('yokuApp')
                 creation: '30-12-2013',
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
-                status: 0,
+                status: 1,
                 assignTo: ['yoku2010@gmail.com'],
                 followers: ['yoku2010@gmail.com'],
                 comments: [],
@@ -254,6 +254,34 @@ angular.module('yokuApp')
               if (pid == this.workspace[i].projects[j].id) {
                 this.workspace[i].projects.splice(j, 1);
                 return true;
+              }
+            }
+          }
+        }
+      }
+    };
+    this.getTaskById = function (wid, pid, tid) {
+      for (var i = 0, ln = this.workspace.length; i < ln; i++) {
+        if (wid == this.workspace[i].id) {
+          if (void 0 != this.workspace[i].projects) {
+            for (var j = 0, pln = this.workspace[i].projects.length; j < pln; j++ ) {
+              if (pid == this.workspace[i].projects[j].id) {
+                var task = null, tln = this.workspace[i].projects[j].tasks.length;
+                for (var k = 0; k < tln; k++ ) {
+                  if (tid == this.workspace[i].projects[j].tasks[k].id) {
+                    task = this.workspace[i].projects[j].tasks[k];
+                    break;
+                  }
+                }
+                if (void 0 == task) {
+                  if (tln > 0) {
+                    task = this.workspace[i].projects[j].tasks[0];
+                  }
+                  else {
+                    task = {};
+                  }
+                }
+                return [this.workspace[i], this.workspace[i].projects[j], task];
               }
             }
           }

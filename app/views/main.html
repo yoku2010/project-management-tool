@@ -83,7 +83,7 @@
                     leave: 'repeat-leave',
                     move: 'repeat-move'}" ng-repeat="task in taskList | filter:tSearch | orderBy:'status':reverse">
                 <td><span class="glyphicon glyphicon-stop"></span></td>
-                <td><a href="#/project-task/{{ task.workspace.id }}/{{ task.project.id }}/{{ task.id }}">{{ task.name }}</a></td>
+                <td><a href="#/workspace-project/{{ task.workspace.id }}/{{ task.project.id }}/{{ task.id }}">{{ task.name }}</a></td>
                 <td><a href="#/workspace-project/{{ task.workspace.id }}/{{ task.project.id }}">{{ task.project.name }}</a></td>
                 <td><a href="#/workspace-details/{{ task.workspace.id }}">{{ task.workspace.name }}</a></td>
                 <td>{{ task.duedate }}</td>

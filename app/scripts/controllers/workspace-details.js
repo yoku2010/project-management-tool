@@ -16,7 +16,7 @@ angular.module('yokuApp')
           $location.path('/');
         }
         else {
-          $window.alert("Invalid data, please try again later.");
+          $window.alert('Invalid data, please try again later.');
         }
       }
     };

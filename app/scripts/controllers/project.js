@@ -56,6 +56,7 @@ angular.module('yokuApp')
         $rootScope.data.selectedWorkspace = wpArr[0];
         $rootScope.data.selectedProject = wpArr[1];
         $scope.project = wpArr[2];
+        $scope.formType = 'edit';
       }
       else {
         $window.alert('Workspace id or Project id is invalid.');
@@ -66,6 +67,7 @@ angular.module('yokuApp')
       if (void 0 != wArr) {
         $rootScope.data.selectedWorkspace = wArr[0];
         $scope.project.wid = wArr[0].id;
+        $scope.formType = 'add';
       }
       else {
         $window.alert('Workspace id is invalid');

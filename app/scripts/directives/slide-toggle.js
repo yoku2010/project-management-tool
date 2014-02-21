@@ -4,7 +4,7 @@ angular.module('yokuApp')
   .directive('slideable', function () {
     return {
       restrict:'C',
-      compile: function (element, attr) {
+      compile: function (element) {
         // wrap tag
         var contents = element.html();
         element.html('<div class="slideable_content" style="margin:0 !important; padding:0 !important" >' + contents + '</div>');
@@ -42,6 +42,6 @@ angular.module('yokuApp')
           attrs.expanded = !attrs.expanded;
         });
       }
-    }
+    };
   });
 
