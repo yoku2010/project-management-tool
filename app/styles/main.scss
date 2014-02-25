@@ -497,8 +497,9 @@ a.disabled:hover {
 }
 .task-header {
     padding: 10px;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid #DFDFDF;
     background-color: #FAFAFA;
+    overflow: hidden;
 }
 .task-content {
     padding: 10px;
@@ -532,4 +533,63 @@ a.disabled:hover {
     font-size: 14px;
     font-weight: bold;
     padding: 0px 5px;
+}
+.task-desc {
+    font-size: 12px;
+    color: #777;
+    float: left;
+    display: block;
+    width: 100%;
+}
+.task-creation, .task-updation, .task-duedate {
+    font-size: 12px;
+    padding: 7px;
+    border: 1px solid #E0E0E0;
+    background-color: #F5F5F5;
+    float: left;
+    width: 150px;
+    margin: 10px 5px 0px 0px;
+}
+.task-creation span, .task-updation span, .task-duedate span {
+    margin-right: 5px;
+    font-size: 13px;
+}
+.task-creation span {
+    color: #1B842E;
+}
+.task-updation span {
+    color: #108CB5;
+}
+.task-duedate span {
+    color: #DB3F30;
+}
+.task-assign-to, .task-followers {
+    float: left;
+    width: 100%;
+}
+.p-list {
+    display:block;
+    margin: 10px 0;
+    padding: 0;
+    margin-left:1px;
+}
+.p-list li{
+    display: inline-block;
+    list-style:none;
+    font-size: 12px;
+    padding: 7px;
+    border: 1px solid #E0E0E0;
+    float:left;
+    margin-left: -1px;
+}
+.p-list li.title-task-per {
+    background-color: #F5F5F5;
+    font-weight: bold;
+    width: 80px;
+}
+.p-list li.task-per {
+    background-color: #FAFAFA;
+}
+.p-list li.task-per {
+    background-color: #FAFAFA;
 }

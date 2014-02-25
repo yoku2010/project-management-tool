@@ -76,13 +76,25 @@
               </a>
               <div class="task-name">{{ data.selectedTask.name }}</div>
               <div class="task-desc">{{ data.selectedTask.description }}</div>
-              <div class="task-creation">{{ data.selectedTask.creation }}</div>
-              <div class="task-updation">{{ data.selectedTask.updation }}</div>
-              <div class="task-duedate">{{ data.selectedTask.duedate }}</div>
-              <div class="task-assignTo">{{ data.selectedTask.assignTo }}</div>
+              <div class="task-creation"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.creation }}</div>
+              <div class="task-updation"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.updation }}</div>
+              <div class="task-duedate"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.duedate }}</div>
+              <div class="task-assign-to">
+                <ul class="p-list">
+                  <li class="title-task-per">Assign To: </li>
+                  <li class="task-per" ng-repeat="a in data.selectedTask.assignTo"> {{ a }}</li>
+                  <li class="add-task-per"><span class="glyphicon glyphicon-plus"></span></li>
+                </ul>
+              </div>
+              <div class="task-followers">
+                <ul class="p-list">
+                  <li class="title-task-per">Followers: </li>
+                  <li class="task-per" ng-repeat="a in data.selectedTask.followers"> {{ a }}</li>
+                  <li class="add-task-per"><span class="glyphicon glyphicon-plus"></span></li>
+                </ul>
+              </div>
             </div>
             <div class="task-content">
-              <div class="task-followers">{{ data.selectedTask.followers }}</div>
               <div class="task-logs">{{ data.selectedTask.logs }}</div>
               <div class="task-comments">{{ data.selectedTask.comments }}</div>
             </div>

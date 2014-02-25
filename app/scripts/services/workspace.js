@@ -89,7 +89,7 @@ angular.module('yokuApp')
               {
                 id: 1,
                 name: 'UI Designing',
-                description: '',
+                description: 'This is for UI Designing using bootstrap 3.0.',
                 creation: '30-12-2013',
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
