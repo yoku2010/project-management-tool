@@ -457,7 +457,7 @@ a.disabled:hover {
   opacity:0;
 }
 .tasks-div {
-    height: 400px;
+    min-height: 400px;
     float:left;
 }
 .task-div, .add-task-div {
@@ -492,7 +492,7 @@ a.disabled:hover {
 .tasks-details {
     background: #f0f0f0;
     border-left: 1px solid #DFDFDF;
-    height: 400px;
+    min-height: 400px;
     margin-left:180px;
 }
 .task-header {
@@ -500,10 +500,11 @@ a.disabled:hover {
     border-bottom: 1px solid #DFDFDF;
     background-color: #FAFAFA;
     overflow: hidden;
+    position: relative;
 }
 .task-content {
-    padding: 10px;
     position: relative;
+    overflow: hidden;
 }
 .task-status {
     float: right;
@@ -512,6 +513,7 @@ a.disabled:hover {
     background-color: #FAFAFA;
     overflow: hidden;
     border-radius: 4px 4px 4px 4px;
+    cursor: default;
 }
 .task-status span {
     float: left;
@@ -549,20 +551,47 @@ a.disabled:hover {
     float: left;
     width: 150px;
     margin: 10px 5px 0px 0px;
+    cursor: default;
 }
-.task-creation span, .task-updation span, .task-duedate span {
+.task-creation span.glyphicon, .task-updation span.glyphicon, .task-duedate span.glyphicon {
     margin-right: 5px;
     font-size: 13px;
 }
-.task-creation span {
+.task-creation span.glyphicon {
     color: #1B842E;
 }
-.task-updation span {
+.task-updation span.glyphicon {
     color: #108CB5;
 }
-.task-duedate span {
+.task-duedate span.glyphicon {
     color: #DB3F30;
 }
+.task-creation span.help, .task-updation span.help, .task-duedate span.help {
+    color: #999;
+}
+.task-creation:hover span.text, .task-creation span.help {
+    display: none;
+}
+.task-updation:hover span.text, .task-updation span.help {
+    display: none;
+}
+.task-duedate:hover {
+    background-color: #FAFAFA;
+    border:1px solid #CCC;
+}
+.task-duedate:hover span.text, .task-duedate span.help {
+    display: none;
+}
+.task-creation span.text, .task-creation:hover span.help {
+    display: inline-block;
+}
+.task-updation span.text, .task-updation:hover span.help {
+    display: inline-block;
+}
+.task-duedate span.text, .task-duedate:hover span.help {
+    display: inline-block;
+}
+
 .task-assign-to, .task-followers {
     float: left;
     width: 100%;
@@ -581,6 +610,7 @@ a.disabled:hover {
     border: 1px solid #E0E0E0;
     float:left;
     margin-left: -1px;
+    cursor: default;
 }
 .p-list li.title-task-per {
     background-color: #F5F5F5;
@@ -592,4 +622,78 @@ a.disabled:hover {
 }
 .p-list li.task-per {
     background-color: #FAFAFA;
+}
+.p-list li.task-per a.del{
+    margin-left: 3px;
+    color: #AAA;
+}
+.p-list li.task-per:hover a.del{
+    color: #444;
+}
+.task-logs {
+    font-size: 12px;
+    position: relative;
+    padding: 4px;
+    margin: 0px 5px;
+    border: 1px solid #F0F0F0;
+}
+.task-logs:hover {
+    background-color: #F5F5F5;
+    border: 1px solid #EAEAEA;
+}
+.task-logs .del-log {
+    float: right;
+    display: none;
+    font-size: 11px;
+}
+.task-logs:hover .del-log {
+    display: inline-block;
+}
+.task-logs .log{
+    color: #888;
+}
+.task-logs .comment{
+    color: #555;
+}
+.task-logs .by, .task-logs .text, .task-logs .date {
+    display: inline-block;
+}
+.task-logs .by {
+    font-weight: bold;
+}
+.task-logs .date {
+    padding-left: 20px;
+    color: #A9A9A9;
+}
+.no-task-logs {
+    padding: 4px;
+    margin: 0px 5px;
+    font-size: 12px;
+    color: #777;
+}
+.comment-form {
+    margin: 10px;
+}
+.task-options {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+}
+.task-options ul {
+    
+}
+.task-options li {
+    list-style: none;
+    float: left;
+}
+.task-options li a {
+    padding: 5px;
+    background-color: #FAFAFA;
+    border: 1px solid #DDD;
+    margin-left: -1px;
+}
+.task-options li a:hover {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+    z-index: 101;
 }

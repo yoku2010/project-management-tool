@@ -44,9 +44,8 @@ angular.module('yokuApp')
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
                 status: 1,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
+                assignTo: [1],
+                followers: [1,2],
                 logs: []
               }
             ]
@@ -64,9 +63,8 @@ angular.module('yokuApp')
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
                 status: 1,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
+                assignTo: [1],
+                followers: [1,3],
                 logs: []
               }
             ]
@@ -90,14 +88,49 @@ angular.module('yokuApp')
                 id: 1,
                 name: 'UI Designing',
                 description: 'This is for UI Designing using bootstrap 3.0.',
-                creation: '30-12-2013',
-                updation: '31-12-2013',
-                duedate: '02-01-2014',
+                creation: '20-Dec-2013',
+                updation: '24-Feb-2014',
+                duedate: '28-Feb-2014',
                 status: 0,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
-                logs: []
+                assignTo: [2],
+                followers: [2,3],
+                logs: [
+                  {
+                    id: 1,
+                    type: 'log',
+                    date: '20-Dec-2013 11:11:11 AM',
+                    text: 'task created',
+                    by: 1
+                  },
+                  {
+                    id: 2,
+                    type: 'log',
+                    date: '20-Dec-2013 15:00:02 PM',
+                    text: 'Assign to Amit Pandita',
+                    by: 1
+                  },
+                  {
+                    id: 3,
+                    type: 'log',
+                    date: '21-Dec-2013 13:00:50 PM',
+                    text: 'Ankit Mittel added as follower',
+                    by: 3
+                  },
+                  {
+                    id: 4,
+                    type: 'comment',
+                    date: '24-Jan-2014 18:00:50 PM',
+                    text: 'This Task taks time in  RnD. So please change the due date.',
+                    by: 2
+                  },
+                  {
+                    id: 4,
+                    type: 'log',
+                    date: '25-Jan-2014 10:00:50 AM',
+                    text: 'Due date changed',
+                    by: 1
+                  }
+                ]
               },
               {
                 id: 2,
@@ -107,9 +140,8 @@ angular.module('yokuApp')
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
                 status: 1,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
+                assignTo: [2],
+                followers: [1,2,3],
                 logs: []
               },
               {
@@ -120,9 +152,8 @@ angular.module('yokuApp')
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
                 status: 0,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
+                assignTo: [1],
+                followers: [1,2,3],
                 logs: []
               }
             ]
@@ -140,9 +171,8 @@ angular.module('yokuApp')
                 updation: '31-12-2013',
                 duedate: '02-01-2014',
                 status: 1,
-                assignTo: ['yoku2010@gmail.com'],
-                followers: ['yoku2010@gmail.com'],
-                comments: [],
+                assignTo: [3],
+                followers: [1,2,3],
                 logs: []
               }
             ]

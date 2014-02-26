@@ -11,7 +11,7 @@ angular.module('yokuApp')
     }
     // delete project
     $scope.deleteProject = function() {
-      if($window.confirm('Are you sure you want to delete this Workspace?')) {
+      if($window.confirm('Are you sure you want to delete this Project?')) {
         var status = Workspace.deleteProjectById($rootScope.data.selectedWorkspace.id, $rootScope.data.selectedProject.id);
         if (status) {
           $location.path('/workspace-details/' + $rootScope.data.selectedWorkspace.id);

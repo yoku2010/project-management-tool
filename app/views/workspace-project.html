@@ -76,27 +76,98 @@
               </a>
               <div class="task-name">{{ data.selectedTask.name }}</div>
               <div class="task-desc">{{ data.selectedTask.description }}</div>
-              <div class="task-creation"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.creation }}</div>
-              <div class="task-updation"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.updation }}</div>
-              <div class="task-duedate"><span class="glyphicon glyphicon-calendar"></span>{{ data.selectedTask.duedate }}</div>
+              <div class="task-creation">
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span class="text">{{ data.selectedTask.creation }}</span>
+                <span class="help">Creation date</span>
+              </div>
+              <div class="task-updation">
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span class="text">{{ data.selectedTask.updation }}</span>
+                <span class="help">Updation date</span>
+              </div>
+              <div class="task-duedate">
+                <a href="#" ng-click="$event.preventDefault();" title="Change Due Date">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </a>
+                <span class="text">{{ data.selectedTask.duedate }}</span>
+                <span class="help">Due date</span>
+              </div>
               <div class="task-assign-to">
                 <ul class="p-list">
                   <li class="title-task-per">Assign To: </li>
-                  <li class="task-per" ng-repeat="a in data.selectedTask.assignTo"> {{ a }}</li>
-                  <li class="add-task-per"><span class="glyphicon glyphicon-plus"></span></li>
+                  <li class="task-per" ng-repeat="a in data.selectedTask.assignTo" title="{{ user.userData[a].email }}">
+                    {{ user.userData[a].fname + ' ' + user.userData[a].lname }}
+                    <a class="del" href="" ng-click="removeAssignedUser(user.userData[a].id); $event.preventDefault();">
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </a>
+                  </li>
+                  <li class="add-task-per">
+                    <a href="#" ng-click="changeAssignedUser(); $event.preventDefault();">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div class="task-followers">
                 <ul class="p-list">
                   <li class="title-task-per">Followers: </li>
-                  <li class="task-per" ng-repeat="a in data.selectedTask.followers"> {{ a }}</li>
-                  <li class="add-task-per"><span class="glyphicon glyphicon-plus"></span></li>
+                  <li class="task-per" ng-repeat="a in data.selectedTask.followers" title="{{ user.userData[a].email }}">
+                    {{ user.userData[a].fname + ' ' + user.userData[a].lname }}
+                    <a class="del" href="#" ng-click="$event.preventDefault();">
+                      <span class="glyphicon glyphicon-remove-circle"></span>
+                    </a>
+                  </li>
+                  <li class="add-task-per">
+                    <a href="#" ng-click="$event.preventDefault();">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-options">
+                <ul>
+                  <li>
+                    <a href="#" ng-click="$event.preventDefault();" title="Mask as Important">
+                      <span class="glyphicon glyphicon-star-empty"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" ng-click="$event.preventDefault();" title="Print this task">
+                      <span class="glyphicon glyphicon-print"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" ng-click="$event.preventDefault();" title="Edit this task details">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" ng-click="$event.preventDefault();" title="Delete this task">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
             <div class="task-content">
-              <div class="task-logs">{{ data.selectedTask.logs }}</div>
-              <div class="task-comments">{{ data.selectedTask.comments }}</div>
+              <div class="task-logs" ng-repeat="log in data.selectedTask.logs">
+                <a class="del-log" href="#" ng-click="removeLog(log.id); $event.preventDefault();">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </a>
+                <div class="by {{log.type}}">{{ user.userData[log.by].fname + ' ' + user.userData[log.by].lname }}: </div>
+                <div class="text {{log.type}}">{{ log.text }}</div>
+                <div class="date {{log.type}}">{{ log.date }}</div>
+              </div>
+              <div ng-hide="data.selectedTask.logs.length" class="no-task-logs">No Logs</div>
+              <form name="form" role="form" class="comment-form">
+                <div class="form-group">
+                  <textarea required class="form-control" ng-model="comment.text" placeholder="enter comment"></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success" ng-disabled="form.$invalid" ng-click="addComment();">Comment</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
